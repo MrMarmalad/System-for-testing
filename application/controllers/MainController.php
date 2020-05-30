@@ -13,7 +13,7 @@ class MainController extends Controller
   public function indexAction()
   {
     //$this->model->test();
-    $this->view->render('index view');
+    $this->view->render('Стартовая страница');
   }
 
   public function registerAction()
