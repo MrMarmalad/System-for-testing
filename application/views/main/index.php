@@ -1,30 +1,38 @@
+<?php
+$menuButtons =
+[
+  'Вход в систему' => [
+    'a' => [
+    'href' => '#',
+    'data-toggle' => 'modal',
+    'data-target' => '#AuthModal',]
+  ],
+  'Обратиться к администратору' => [
+    'a'=> [
+    'href' => '#',
+    'data-toggle' => 'modal',
+    'data-target' => '#writeToAdminModal',]
+  ],
+  'О программе' => [
+    'a' => [
+    'href' => '#'
+  ]
+  ]
+]
 
-<nav class="navbar navbar-dark bg-primary navbar-expand-lg">
-  <a href="#" class="navbar-brand">
-    <img src="public/recources/mstucaEmblem.png" width="50" height="65" alt="">
-  </a>
-<a class="navbar-brand" href="#">Система тестирования</a>
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-</button>
-<div class="collapse navbar-collapse" id="navbarNav">
-  <ul class="navbar-nav">
-    <li class="nav-item active">
-      <a class="nav-link" href="#">Главная страница <span class="sr-only">(current)</span></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#" data-toggle="modal"
-      data-target="#AuthModal">Вход в систему</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Обратиться к администратору</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">О программе</a>
-    </li>
-  </ul>
-</div>
-</nav>
+ ?>
+ <!--
+   <li class="nav-item">
+     <a class="nav-link" href="#" data-toggle="modal"
+     data-target="#AuthModal">Вход в систему</a>
+   </li>
+   <li class="nav-item">
+     <a class="nav-link" href="#">Обратиться к администратору</a>
+   </li>
+   <li class="nav-item">
+     <a class="nav-link" href="#">О программе</a>
+   </li>
+ </ul> -->
 
 
 <div class="modal fade" id="AuthModal" tabindex="-1" role="dialog"
@@ -41,10 +49,10 @@ aria-labelledby="AuthModal" aria-hidden="true">
       <div class="container-fluid">
         <div class="row">
           <div class="col-md">
-            <form id="modalFormLogin">
+            <form id="modalFormLogin" action="enter" method="post">
               <div class="form-group">
                 <label for="exampleInputEmail1">Логин</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                 <small id="emailHelp" class="form-text text-muted">Выдается администратором системы</small>
               </div>
               <div class="form-group">
@@ -79,8 +87,53 @@ aria-labelledby="AuthModal" aria-hidden="true">
   </div>
 </div>
 
+
+<div class="modal fade" id="writeToAdminModal" tabindex="-1" role="dialog"
+aria-labelledby="AuthModal" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title" id="writeToAdminModal">Сообщение администратору системы</h5>
+    <button class="close" type="button" data-dismiss="modal">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+    <div class="modal-body">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md">
+            <form id="sendToAdmin" action="enter" method="post">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Введите e-mail для обратной связи</label>
+                <input type="email" class="form-control" id="emailToAdmin" aria-describedby="emailHelp">
+              </div>
+              <div class="form-group">
+                <label for="messageToAdmin">Сообщение</label>
+                <textarea class="form-control" id="messageToAdmin" rows="3"></textarea>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="row">
+        <div class="col-md-12 text-right">
+          <div class="text-left">
+            <button type="submit" class="btn btn-primary" form="modalFormLogin">
+              Отправить
+            </button>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
 </div>
-</div>
+<?php
+
+require_once 'application\views\layouts\defaultMenu.php';
+?>
 <!-- <nav class="navbar navbar-dark bg-primary">
   <a href="#" class="navbar-brand">
     <img src="public/recources/mstucaEmblem.png" width="50" height="65" alt="">
