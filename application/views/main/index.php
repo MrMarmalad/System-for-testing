@@ -20,6 +20,7 @@ $menuButtons =
   ]
 ]
 
+  //require_once 'application\views\layouts\defaultMenu.php';
  ?>
  <!--
    <li class="nav-item">
@@ -51,13 +52,13 @@ aria-labelledby="AuthModal" aria-hidden="true">
           <div class="col-md">
             <form id="modalFormLogin" action="enter" method="post">
               <div class="form-group">
-                <label for="exampleInputEmail1">Логин</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <small id="emailHelp" class="form-text text-muted">Выдается администратором системы</small>
+                <label for="login">Логин</label>
+                <input type="text" class="form-control" id="login">
+                <small id="loginHelp" class="form-text text-muted">Выдается администратором системы</small>
               </div>
               <div class="form-group">
-                <label for="exampleInputPassword1">Пароль</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <label for="password">Пароль</label>
+                <input type="password" class="form-control" id="password">
               </div>
               <!-- <div class="form-group form-check">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -132,7 +133,7 @@ aria-labelledby="AuthModal" aria-hidden="true">
 </div>
 <?php
 
-require_once 'application\views\layouts\defaultMenu.php';
+
 ?>
 <!-- <nav class="navbar navbar-dark bg-primary">
   <a href="#" class="navbar-brand">

@@ -5,7 +5,6 @@ namespace application\models;
  *
  */
 use application\core\Model;
-
 class Main extends Model
 {
   //delete this
@@ -14,7 +13,7 @@ class Main extends Model
     // $sql = "SELECT id, roleStr FROM `users` WHERE
     //  login = :login AND password =:password JOIN roles ON users.role = roles.roleNum";
     $sql = "SELECT * FROM users JOIN roles ON users.role = roles.roleNum WHERE users.login = :login AND users.password = :password";
-    return $this->db->row($sql,['login'=> $login, 'password' => $passwd]);
+    //return $this->db->row($sql,['login'=> $login, 'password' => $passwd]);
      //echo empty($this->db->query($sql,['login'=> 'alex', 'password' => 'alex']));
   }
 

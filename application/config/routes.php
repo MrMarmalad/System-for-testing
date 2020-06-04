@@ -9,6 +9,11 @@ return [
       'controller' => 'main',
       'action' => 'enter'],
 
+      'configuration' => [
+        'controller' => 'configuration',
+        'action' => 'configure',
+      ],
+
       'about' => [
         'controller' => 'main',
         'action' => 'about'],

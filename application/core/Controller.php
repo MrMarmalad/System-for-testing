@@ -3,6 +3,7 @@
 namespace application\core;
 
 use application\core\View;
+use application\lib\Security;
 
  abstract class Controller
 {
@@ -10,13 +11,18 @@ use application\core\View;
   public $view;
   public $model;
   protected $acl;
-
+  protected $security;
   function __construct($route)
   {
     $this->route=$route;
+    //echo $this->route['action'];
     if (empty($this->acl))
     {
       View::errorCode(500);
+    }
+    else {
+      $this->security= new Security($this->route);
+      //if ($this->security->access())
     }
     //$this->checkAcl();
     $this->view = new View($this->route);
@@ -41,19 +47,7 @@ use application\core\View;
     }
   }
 
-  protected function checkAcl()
-  {
-    if (empty($acl))
-    {
-      $this->acl = require 'application\acl\\' . $this->route['controller'].'.php';
-    }
 
-  }
-
-  protected function inAcl(string $key)
-  {
-    return in_array($this->route['action'], $this->acl["$key"]);
-  }
 }
 
 

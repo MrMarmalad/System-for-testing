@@ -1,6 +1,10 @@
 AddDefaultCharset utf-8
 
 RewriteEngine on
+
+RewriteCond %{HTTPS}_%{HTTP_HOST} ^(?|off_(?:www\.)?(.*)|on_www\.(.*)) [NC]
+RewriteRule .* https://%1/$0 [R=301,L]
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php

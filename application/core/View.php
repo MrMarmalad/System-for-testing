@@ -30,6 +30,18 @@ class View
       if (isset($custom_scripts)){
         $custom_scripts = $this->custom_scripts + $custom_scripts;
       }
+
+      if (isset($menu))
+      {
+        $pathToMenu = 'application/views/menu/' . $menu . '.php';
+        //echo $pathToMenu;
+        if (file_exists($pathToMenu))
+        {
+
+          require $pathToMenu;
+        }
+      }
+
       else {
         $custom_scripts = $this->custom_scripts;
       }
