@@ -26,18 +26,22 @@ class MainController extends Controller
   public function enterAction()
   {
     //var_dump($_POST);
-    
+
     $status = $this->model->enter($_POST['login'], $_POST['password']);
     switch ($status) {
       case 'register_admin':
         //header('Location: configuration/registerAdmin');
         $this->redirect('configuration/registerAdmin');
         break;
-      case 'success':
-        echo $status;
+      case 'admin':
+        //echo $status;
+        $this->redirect('admin/index');
         break;
-      case 'not_found':
-        echo $status;
+      case 'testable':
+        //echo $status;
+        break;
+      case 'teacher':
+        //echo $status;
         break;
     }
   }

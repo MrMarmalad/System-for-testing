@@ -17,7 +17,7 @@
       <a class="nav-link" href="/">Главная страница <span class="sr-only">(current)</span></a>
     </li>
   <?php
-  if (isset($menuButtons)):
+  if (!empty($menuButtons)):
     foreach ($menuButtons as $button => $attributes): ?>
     <li class="nav-item">
       <a class="nav-link" <?php foreach ($attributes['a'] as $att => $val) { echo $att. '="' . $val . '"';} ?>

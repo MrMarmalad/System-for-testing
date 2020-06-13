@@ -37,6 +37,15 @@ class Db
     //debug($this->db->errorInfo());
     return $stmt;
   }
+  public function getLastInsertId()
+  {
+    return $this->db->lastInsertId();
+  }
+
+  public function getLastError()
+  {
+    return $this->db->errorInfo();
+  }
 
   public function row ($sql, $params=[], $flag=PDO::FETCH_ASSOC)
   {

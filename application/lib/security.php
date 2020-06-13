@@ -25,13 +25,7 @@ class Security
     return hash('sha256', $str . $salt . $conf['key']);
   }
 
-  // public function getHash($password, $salt)
-  // {
-  //   $conf = require_once 'application/config/config.php';
-  //   return hash('sha3-256', $password . $salt . $conf['key']);
-  // }
-
-  public function setLogPass($log, $pass, $salt=NULL)
+  public function setLogPass($pass, $log=NULL, $salt=NULL)
   {
     if (!isset($salt)){
       $salt = date("Y-m-d H:i:s");      // 2001-03-10 17:16:18 (формат MySQL DATETIME)
@@ -45,16 +39,18 @@ class Security
   public function setSession($role, $statement=[])
   {
     session_start();
+    $_SESSION['role'] = $role;
     foreach ($statement as $key => $value) {
       $_SESSION[$key] = $value;
-
     }
     session_write_close();
-    var_dump($_SESSION);
+    //var_dump($_SESSION);
   }
 
-
-
+  public function getSession()
+  {
+    // code...
+  }
 
   public function access($role='guest', $key=NULL, $acl=NULL)
   {

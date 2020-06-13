@@ -24,6 +24,16 @@ return [
         'action' => 'addAdmin',
       ],
 
+      'admin/index' => [
+        'controller' => 'configuration',
+        'action' => 'index',
+      ],
+
+      'admin/users' => [
+        'controller' => 'configuration',
+        'action' => 'users',
+      ],
+
       'about' => [
         'controller' => 'main',
         'action' => 'about'],

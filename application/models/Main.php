@@ -28,12 +28,13 @@ class Main extends Model
       $rows = $this->db->row($sql, ['login'=> $login, 'password' => $passwd], PDO::FETCH_CLASS);
       foreach ($rows as $key => $object) {
         $hashedLogPass = $security->setLogPass($login, $passwd, $object->date_reg);
-        if (($hashedLogPass['login'] == $object->login) && ($hashedLogPass['password'] == $object->password))
+        if (($login == $object->login) && ($hashedLogPass['password'] == $object->password))
           {
             $getRole = "SELECT * FROM roles WHERE roleNum= :num";
             $role = $this->db->row($getRole, ['num' => $object->role]);
-            $ret_val="success";
-            debug($object);
+            //var_dump($role);
+            $ret_val= $role[0]['roleStr'];
+            $security->setSession("roleStr", ['id' => $object->id, 'loginTime' => date("Y-m-d H:i:s")] );
           }
       }
     }

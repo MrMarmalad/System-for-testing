@@ -26,24 +26,17 @@ namespace application\controllers;
 
    public function addAdminAction()
    {
-     //$security = new Security();
-
-     $hashArray = $this->security->setLogPass($_POST['loginAdm'], $_POST['passwordAdm']);
-     //var_dump($hashArray);
-     //debug([$_POST['loginAdm'], $_POST['passwordAdm'], $hashArray['login'], $hashArray['password'], $_POST['fio'], $hashArray['salt'] ]);
-     //debug($this->model);
-     $status = $this->model->addAdmin($hashArray['login'], $hashArray['password'], $_POST['fio'], $hashArray['salt']);
-     //$this->redirect('');
-     debug($status);
-     echo "complete";
+     $hashArray = $this->security->setLogPass($_POST['passwordAdm']);
+     $status = $this->model->addAdmin($_POST['loginAdm'], $hashArray['password'], $_POST['fio'], $hashArray['salt']);
+     $this->redirect('/');
+     //var_dump($status);
+     //$this->security->setSession('admin',)
+     //debug($status);
+     //echo "complete";
+     //$this->redirect()
    }
-   // public function configureAction()
-   // {
-   //   if ($this->model->isAdminThere() === 0) {
-   //     $this->view->render('Первоначальная конфигурация', [$firstConfugiration = TRUE])
-   //   }
-   //   else {
-   //     $this->view->render('Вход', [$firstConfigurtion = FALSE])
-   //   }
-   // }
+
+
+
+
  }
